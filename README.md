@@ -9,3 +9,13 @@
 8) Consider your data model. What objects will you be using? What are the key/value pairs? What arrays do you need? What needs to live in local storage?
 9) Consider what features _depend_ on what other features. Use this dependency logic to figure out what order to complete tasks.
 
+### Design the App
+<!-- Using HTML and CSS, design the look and feel of the guessing game. At a minimum you will need:
+
+Page layout (title, header, etc.)
+Explain the rules to the user -->
+<!-- An input of type number for specifying the guess -->
+A button to click to submit the guess
+Display of number of tries remaining
+Display of guess too high or too low
+Display of lose and win result
