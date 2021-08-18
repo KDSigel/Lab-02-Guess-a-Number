@@ -1,4 +1,6 @@
 // import functions and grab DOM elements
+import { compareNumbers } from './utils.js';
+
 const guessInput = document.querySelector('#guess-input');
 const submitBtn = document.querySelector('#submit-btn');
 const triesRemaining = document.querySelector('#tries-remaining');
@@ -20,6 +22,12 @@ submitBtn.addEventListener('click', () => {
     let matchOrNot = compareNumbers(guess, correctNumber);
     let howManyLeft = (guessesLeft--);
 
+    if (howManyLeft === 0) {
+        triesRemaining.textContent = 'You failed';
+        submitBtn.textContent = 'try again?';
+        highLowWinLose.textContent = '';
+        return;
+    }
     if (matchOrNot === 0) {
         highLowWinLose.textContent = 'Bang on!';
         triesRemaining.textContent = '';
@@ -35,8 +43,8 @@ submitBtn.addEventListener('click', () => {
     }
 });
 
-function compareNumbers(guess, correctNumber) {
-    if (guess === correctNumber) return 0;
-    if (guess < correctNumber) return -1;
-    if (guess > correctNumber) return 1;
-}
+// function compareNumbers(guess, correctNumber) {
+//     if (guess === correctNumber) return 0;
+//     if (guess < correctNumber) return -1;
+//     if (guess > correctNumber) return 1;
+// }
