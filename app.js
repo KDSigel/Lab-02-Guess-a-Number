@@ -5,10 +5,14 @@ const guessInput = document.querySelector('#guess-input');
 const submitBtn = document.querySelector('#submit-btn');
 const triesRemaining = document.querySelector('#tries-remaining');
 const highLowWinLose = document.querySelector('#high-low-win-lose');
+const numberWon = document.querySelector('#number-won');
+const numberLost = document.querySelector('#number-lost');
 
 // initialize global state
 let correctNumber = Math.ceil(Math.random() * 20);
 let guessesLeft = 3;
+let numberOfLoses = 0;
+let numberOfWins = 0;
 
 console.log(correctNumber);
 
@@ -26,12 +30,17 @@ submitBtn.addEventListener('click', () => {
         triesRemaining.textContent = 'You failed';
         submitBtn.textContent = 'try again?';
         highLowWinLose.textContent = '';
+        numberOfLoses++;
+        numberLost.textContent = Number(numberOfLoses);
         return;
     }
     if (matchOrNot === 0) {
         highLowWinLose.textContent = 'Bang on!';
         triesRemaining.textContent = '';
         submitBtn.style.display = 'none';
+        numberOfWins++;
+        numberWon.textContent = Number(numberOfWins);
+        return;
     }
     if (matchOrNot === -1) {
         highLowWinLose.textContent = 'Too Low!';
@@ -42,9 +51,3 @@ submitBtn.addEventListener('click', () => {
         triesRemaining.textContent = howManyLeft + ' tries remaining';
     }
 });
-
-// function compareNumbers(guess, correctNumber) {
-//     if (guess === correctNumber) return 0;
-//     if (guess < correctNumber) return -1;
-//     if (guess > correctNumber) return 1;
-// }
